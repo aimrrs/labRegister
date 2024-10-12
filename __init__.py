@@ -1,15 +1,19 @@
 from main import Register
 from time import sleep
 
-name = input("Enter your name : ")
-nodeNumber = int(input("Enter you place number : "))
-rollNumber = int(input("Enter your roll number : "))
+rollNumber = input("Enter your roll number : ")
 
 register = Register()
-register.entry(name, nodeNumber,rollNumber)
-sleep(5)
-register.exitLab()
-sleep(2)
-entries = register.inMates()
-for entri in entries:
-    print(entri)
+
+#Create table aka entry for that day.
+if not register.ifTableExists():
+    register.createTable()
+
+#Entry
+out = register.entry(rollNumber)
+print(out)
+
+"""
+1. To make register, student can only enter their roll no,
+    and get their details displayed.
+"""
